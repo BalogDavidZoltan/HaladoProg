@@ -1,2 +1,0 @@
-# HaladoProg
-Haladó programozás beadandó
