@@ -85,6 +85,15 @@ LEVELS = [
         "enemy_zone": (150,330),
         "goal": pygame.Rect(650,150,50,50),
         "player_start": (70,300),
+    },
+    {
+        "platforms": [pygame.Rect(0, 550, 3000, 50), pygame.Rect(200,450,200,20), pygame.Rect(450,350,200,20), pygame.Rect(700,270,150,20), pygame.Rect(1000,300,200,20), pygame.Rect(1350,200,200,20), pygame.Rect(1650,400,200,20), pygame.Rect(2250,470,200,20), pygame.Rect(2600,370,200,20)],
+        "spikes": [pygame.Rect(350,530,50,20), pygame.Rect(400,530,50,20), pygame.Rect(450,530,50,20), pygame.Rect(500,530,50,20), pygame.Rect(550,530,50,20), pygame.Rect(600,530,50,20), pygame.Rect(650,530,50,20), pygame.Rect(700,530,50,20), pygame.Rect(750,530,50,20), pygame.Rect(800,530,50,20), pygame.Rect(850,530,50,20), pygame.Rect(1075,280,50,20), pygame.Rect(900,530,50,20), pygame.Rect(950,530,50,20), pygame.Rect(1000,530,50,20), pygame.Rect(1050,530,50,20), pygame.Rect(1100,530,50,20), pygame.Rect(1150,530,50,20), pygame.Rect(1200,530,50,20), pygame.Rect(1250,530,50,20), pygame.Rect(1300,530,50,20), pygame.Rect(1350,530,50,20), pygame.Rect(1400,530,50,20), pygame.Rect(1450,530,50,20)
+                   , pygame.Rect(1500,530,50,20), pygame.Rect(1550,530,50,20), pygame.Rect(1600,530,50,20), pygame.Rect(1650,530,50,20), pygame.Rect(1700,530,50,20), pygame.Rect(1750,530,50,20), pygame.Rect(1800,530,50,20), pygame.Rect(1850,530,50,20), pygame.Rect(1900,530,50,20), pygame.Rect(1950,530,50,20), pygame.Rect(1730,380,50,20), pygame.Rect(2200,530,50,20), pygame.Rect(2250,530,50,20), pygame.Rect(2300,530,50,20), pygame.Rect(2350,530,50,20), pygame.Rect(2400,530,50,20), pygame.Rect(2450,530,50,20), pygame.Rect(2500,530,50,20), pygame.Rect(2550,530,50,20), pygame.Rect(2600,530,50,20), pygame.Rect(2650,530,50,20), pygame.Rect(2700,530,50,20), pygame.Rect(2750,530,50,20), pygame.Rect(2800,530,50,20), pygame.Rect(2850,530,50,20), pygame.Rect(2900,530,50,20)],
+        "enemy": pygame.Rect(500,310,40,40),
+        "enemy_zone": (450,650),
+        "goal": pygame.Rect(2750,320,50,50),
+        "player_start": (100,300),
     }
 ]
 
@@ -224,7 +233,7 @@ def play_level(level_index):
         draw(level)
 
 def main():
-    for i in range(3):
+    for i in range(4):
         completed = play_level(i)
         if not completed:
             return main()
