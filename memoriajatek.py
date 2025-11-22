@@ -10,7 +10,7 @@ WIDTH, HEIGHT = 800, 900
 BOARD_HEIGHT = 800
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 FONT_MED = pygame.font.SysFont(None, 40)
-pygame.display.set_caption("Memóriajáték – 26 lapos francia pakli")
+pygame.display.set_caption("Memóriajáték")
 
 # --- Gomb osztály ---
 class Button:

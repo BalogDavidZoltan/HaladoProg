@@ -54,18 +54,20 @@ def generate_question():
     return question, answer
 
 def draw_question(q_text, user_input, score, question_num):
-    WIN.fill((0,0,0))
+    bg_img = pygame.image.load('math.jpg')
+    bg_img = pygame.transform.scale(bg_img, (WIDTH, HEIGHT)) 
+    WIN.blit(bg_img, (0, 0))
     # Kérdés
     question_surface = FONT_BIG.render(q_text, True, (255,255,255))
     WIN.blit(question_surface, (WIDTH//2 - question_surface.get_width()//2, HEIGHT//3))
     # Input
-    input_surface = FONT_BIG.render(user_input, True, (0,255,0))
+    input_surface = FONT_BIG.render(user_input, True, (255,255,255))
     WIN.blit(input_surface, (WIDTH//2 - input_surface.get_width()//2, HEIGHT//2))
     # Pontszám
     score_surface = FONT_MED.render(f"Pontszám: {score}", True, (255,255,0))
     WIN.blit(score_surface, (10, 10))
     # Számláló
-    counter_surface = FONT_MED.render(f"Kérdés: {question_num}/{NUM_QUESTIONS}", True, (0,200,255))
+    counter_surface = FONT_MED.render(f"Kérdés: {question_num}/{NUM_QUESTIONS}", True, (255,255,0))
     WIN.blit(counter_surface, (WIDTH - counter_surface.get_width() - 10, 10))
     # Gombok
     btn_new.draw(WIN)

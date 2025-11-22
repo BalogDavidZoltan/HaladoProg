@@ -7,7 +7,7 @@ pygame.init()
 # --- Ablak ---
 WIDTH, HEIGHT = 800, 600
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Játék választó")
+pygame.display.set_caption("Menu")
 
 FONT_BIG = pygame.font.SysFont(None, 60)
 FONT_MED = pygame.font.SysFont(None, 40)
@@ -35,16 +35,20 @@ class Button:
 # --- Gombok ---
 btn_quiz = Button(200, 150, 400, 70, "Matematikai Quiz", (50,150,50), (70,200,70))
 btn_memory = Button(200, 250, 400, 70, "Memóriajáték", (50,50,200), (70,70,255))
-btn_exit = Button(200, 350, 400, 70, "Kilépés", (200,50,50), (255,70,70))
+btn_platform = Button(200, 350, 400, 70, "Platformer", (255,140,0), (255,180,50))
+btn_exit = Button(200, 450, 400, 70, "Kilépés", (200,50,50), (255,70,70))
 
 # --- Főmenü ---
 def main_menu():
     while True:
-        WIN.fill((0,0,0))
-        title = FONT_BIG.render("Válassz játékot:", True, (255,255,0))
+        bg_img = pygame.image.load('hq720.jpg')
+        bg_img = pygame.transform.scale(bg_img, (WIDTH, HEIGHT)) 
+        WIN.blit(bg_img, (0, 0))
+        title = FONT_BIG.render("Válassz játékot", True, (255,255,255))
         WIN.blit(title, (WIDTH//2 - title.get_width()//2, 50))
         btn_quiz.draw(WIN)
         btn_memory.draw(WIN)
+        btn_platform.draw(WIN)
         btn_exit.draw(WIN)
         pygame.display.update()
 
@@ -59,6 +63,10 @@ def main_menu():
             elif btn_memory.is_clicked(event):
                 pygame.quit()  # bezárjuk a főmenü ablakot
                 subprocess.run([sys.executable, "memoriajatek.py"])
+                sys.exit()
+            elif btn_platform.is_clicked(event):
+                pygame.quit()  # bezárjuk a főmenü ablakot
+                subprocess.run([sys.executable, "platformer.py"])
                 sys.exit()
             elif btn_exit.is_clicked(event):
                 pygame.quit()
