@@ -104,22 +104,46 @@ def draw_board():
 
 # --- Flip animáció ---
 def flip_card_anim(row, col):
-    x = col*(CARD_WIDTH+10)
-    y = row*(CARD_HEIGHT+10)
+    x = col * (CARD_WIDTH + 10)
+    y = row * (CARD_HEIGHT + 10)
 
+    # Hátralévő kártyákat rajzoljuk, kivéve a flipeltet
+    def draw_board_exclude_flip():
+        WIN.fill((0,0,0))
+        for r in range(ROWS):
+            for c in range(COLS):
+                if r == row and c == col:
+                    continue  # ezt a kártyát kihagyjuk
+                x2 = c * (CARD_WIDTH + 10)
+                y2 = r * (CARD_HEIGHT + 10)
+                if board[r][c] is None:
+                    continue
+                if hidden[r][c]:
+                    WIN.blit(card_back, (x2, y2))
+                else:
+                    WIN.blit(card_images[board[r][c]], (x2, y2))
+        # Gombok
+        pygame.draw.rect(WIN, (50,50,50), (0, BOARD_HEIGHT, WIDTH, HEIGHT-BOARD_HEIGHT))
+        btn_new.draw(WIN)
+        btn_exit.draw(WIN)
+        btn_return.draw(WIN)
+
+    # Hátlap “összehúzása”
     for scale in range(CARD_WIDTH, 0, -10):
-        draw_board()
-        rect = pygame.Rect(x + (CARD_WIDTH-scale)//2, y, scale, CARD_HEIGHT)
-        pygame.draw.rect(WIN, (200,200,200), rect)
+        draw_board_exclude_flip()
+        rect_x = x + (CARD_WIDTH - scale)//2
+        WIN.blit(pygame.transform.scale(card_back, (scale, CARD_HEIGHT)), (rect_x, y))
         pygame.display.update()
         pygame.time.delay(20)
 
-    for scale in range(0, CARD_WIDTH+1, 10):
-        draw_board()
+    # Előlap “kinyitása”
+    for scale in range(0, CARD_WIDTH + 1, 10):
+        draw_board_exclude_flip()
         img = pygame.transform.scale(card_images[board[row][col]], (scale, CARD_HEIGHT))
-        WIN.blit(img, (x + (CARD_WIDTH-scale)//2, y))
+        WIN.blit(img, (x + (CARD_WIDTH - scale)//2, y))
         pygame.display.update()
         pygame.time.delay(20)
+
 
 # --- Párok ellenőrzése ---
 def all_matched():
