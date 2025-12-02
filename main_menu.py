@@ -2,7 +2,7 @@ import pygame
 import sys
 import subprocess
 
-pygame.init()
+pygame.init()  
 
 # --- Ablak ---
 WIDTH, HEIGHT = 800, 600    # Ablak méretei(szélesség, hosszúság) pixelben
@@ -76,3 +76,4 @@ def main_menu():
 # --- Fő program ---
 if __name__ == "__main__":
     main_menu()
+
