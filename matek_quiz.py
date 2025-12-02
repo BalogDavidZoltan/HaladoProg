@@ -23,7 +23,7 @@ class Button:
         self.rect = pygame.Rect(x, y, w, h)
         self.text = text
         self.color = color
-        self.hover_color = hover_color
+        self.hover_color = hover_color   
 
     def draw(self, surface):
         mouse_pos = pygame.mouse.get_pos()
@@ -207,4 +207,5 @@ while True:
         break
 
 pygame.quit()
+
 sys.exit()
